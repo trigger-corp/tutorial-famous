@@ -1,0 +1,127 @@
+html { 
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #555;
+    color: black;
+    font-family: "Helvetica Neue", "Helvetica", "Arial";
+    font-weight: lighter;
+}
+
+.backfaceVisibility {
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+}
+
+.menu-item {
+    /*background: white;*/
+    color: black;
+    font-weight: bold;
+    font-size: 30px; /*1.5em;*/
+    /*padding: 10px;
+    margin: 10px;*/
+    padding: 5px;
+    border: 0px solid red;
+    height: 40px;
+}
+
+div.front {
+    -webkit-user-select: none; /* Disable 'hold to copy' */
+    background: white;
+    color:black;
+    border-radius: 7px;
+    border: 0.5px solid grey; /* iOS 8 only */
+    padding: 0px;/*15px;*/
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 290px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.33);
+}
+
+div.rear {
+    -webkit-user-select: none; /* Disable 'hold to copy' */
+    background: #dddddd;
+    color:black;
+    border-radius: 7px;
+    border: 0.5px solid grey; /* iOS 8 only */
+    padding: 0px;/*15px;*/
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 290px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.33);
+}
+
+div.rear .image {
+    /*border: 0.5px solid black;*/
+    /*width: 270px;
+    height: 270px;*/
+    width: 100%;
+    height: 100%;
+}
+
+div.rear .icon {
+    width: 100px;
+    height: 100px;
+    padding: 0px;
+    margin: 0px;
+    margin-right: 5px;
+    float: left;
+    border-right: 0.5px solid grey;
+}
+
+div.rear .user {
+    font-weight: bold;
+    height: 1.25em; /*25px;*/
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border: 0px solid blue;
+    padding: 0px;
+    margin: 0px;
+    margin-right: 5px;
+}
+
+div.rear .caption {
+    font-size: 0.75em;
+    padding: 0px;
+    margin: 0px;
+    margin-right: 5px;
+    margin-top: 5px;
+    border: 0px solid red;
+    height: 5.2em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+div.rear .comments {
+    background: #eeeeee;
+    border-top: 0.5px solid grey;
+    clear:both;
+    font-size: 0.65em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 160px;
+    line-height: 1.2em;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+div.rear .comments .comment {
+    padding-bottom: 10px;
+}
+
+div.rear span.usertag {
+    color: blue;
+    font-weight: normal;
+}
+
+div.rear span.hashtag {
+    color: brown;
+    font-weight: normal;
+}

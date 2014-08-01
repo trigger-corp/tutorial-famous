@@ -1,0 +1,87 @@
+{
+	"config_version": "4",
+	"name": "triggerio-generators",
+	"author": "antoine@trigger.io",
+	"version": "0.1",
+	"platform_version": "v2.1.9",
+	"description": "An empty app created by default",
+	"core": {
+		"general": {
+			"logging": {
+				"level": "DEBUG"
+			},
+			"reload": true
+		},
+		"ios": {
+			"minimum_version": "7.0",
+			"device_family": "iphone"
+		},
+		"android": {
+			"minimum_version": "5"
+		}
+	},
+	"modules": {
+		"file": {
+			"version": "2.4"
+		},
+		"request": {
+			"version": "2.5",
+			"config": {
+				"permissions": []
+			}
+		},
+		"display": {
+			"version": "2.3",
+			"config": {
+				"fullscreen": {
+					"ios7": "no-statusbar"
+				},
+				"orientations": {
+					"ipad": "portrait",
+					"android": "portrait",
+					"iphone": "portrait"
+				}
+			}
+		},
+		"launchimage": {
+			"version": "2.4",
+			"config": {
+				"background-size": "auto"
+			}
+		},
+		"geolocation": {
+			"version": "2.0"
+		},
+		"media": {
+			"version": "2.3",
+			"config": {}
+		},
+		"icons": {
+			"version": "2.3",
+			"config": {}
+		},
+		"notification": {
+			"version": "2.4"
+		},
+		"prefs": {
+			"version": "2.0"
+		},
+		"sms": {
+			"version": "2.2"
+		},
+		"ui": {
+			"version": "2.1"
+		},
+		"topbar": {
+			"version": "2.4",
+			"disabled": false
+		},
+		"tabbar": {
+			"version": "2.4",
+			"disabled": false
+		},
+		"tabs": {
+			"version": "2.6"
+		}
+	}
+}

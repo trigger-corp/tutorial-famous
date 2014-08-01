@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Testfamous</title>
+        <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        
+        <link rel="stylesheet" type="text/css" href="lib/famous/core/famous.css" />
+        <link rel="stylesheet" type="text/css" href="css/app.css" />
+
+        <!-- famo.us polyfills for older devices -->
+        <script type="text/javascript" src="lib/famous-polyfills/functionPrototypeBind.js"></script>
+        <script type="text/javascript" src="lib/famous-polyfills/classList.js"></script>
+        <script type="text/javascript" src="lib/famous-polyfills/requestAnimationFrame.js"></script>
+
+        <!-- requirejs -->
+        <script type="text/javascript" src="lib/requirejs/require.js" data-main="js/requireConfig"></script>
+    </head>
+    <body>
+
+        <script id="template-front" type="text/x-handlebars-template">
+            <div class="front">
+                <img class="image" src="{{images.low_resolution.url}}" />
+            </div>
+        </script>
+
+        <script id="template-rear" type="text/x-handlebars-template">
+            <div class="rear">
+                <img class="icon" src="{{user.profile_picture}}" />
+                <div class="user">{{user.full_name}}</div>
+                <div class="caption">{{pretty caption.text}}</div>
+                <div class="comments">
+                    {{#slice 0 5 comments.data}} <!-- slice ? -->
+                    <div class="comment">
+                        <b>{{from.full_name}}:</b> {{pretty text}}
+                    </div>
+                    {{/slice}}
+                </div>
+            </div>
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "famous-base",
+  "description": "E.g. Seed project to get started with Famo.us.",
+  "version": "0.1.0",
+  "homepage": "https://github.com//famous-base",
+  "author": {
+    "name": "Antoine van Gelder",
+    "url": "http://github.com//"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com//famous-base.git"
+  },
+  "bugs": {
+    "url": "https://github.com//famous-base/issues"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  }
+}
