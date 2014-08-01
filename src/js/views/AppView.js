@@ -1,7 +1,5 @@
 /* globals define, forge */
-
 define(function(require, exports, module) {
-
     var Modifier = require("famous/core/Modifier");
     var Transform = require("famous/core/Transform");
     var View = require("famous/core/View");
@@ -31,7 +29,7 @@ define(function(require, exports, module) {
             duration: 400,
             curve: "easeInOut"
         },
-        currentTag: "popular"
+        currentTag: "Popular"
     };
 
     function _createNativeView() {
@@ -43,17 +41,12 @@ define(function(require, exports, module) {
         this.settingsContainer = new ContainerSurface({
             properties: {
                 overflow: "hidden",
-                backgroundColor: "white",
-                border: "1px solid purple"
+                backgroundColor: "white"
             }
         });
         this.settingsView = new SettingsView();
         this.subscribe(this.settingsView);
-        var modifier = new Modifier({
-            align: [0.45, 0.5],
-            origin: [0.5, 0.5]
-        });
-        this.settingsContainer.add(modifier).add(this.settingsView);
+        this.settingsContainer.add(this.settingsView);
         this.add(this.settingsContainer);
     }
 
@@ -90,8 +83,14 @@ define(function(require, exports, module) {
         this._eventInput.on("clickTag", function (tag) {
             self.options.currentTag = tag;
             self.onClickRefresh();
-            self.nativeView.trigger("clickDone");
+            self.nativeView.trigger("clickDone", tag);
         });
+
+        // none of this works!?!
+        //this.add(this.nativeView);
+        //this._eventInput.pipe(this.nativeView);
+        //this.nativeView.pipe(this);
+        //this.nativeView.subscribe(this);
     }
 
     AppView.prototype.toggleMainView = function () {
@@ -108,7 +107,7 @@ define(function(require, exports, module) {
 
     AppView.prototype.onClickRefresh = function () {
         var client_id = "e8f3e3e90a0d466484df7fac556c51da";
-        var tag = this.options.currentTag;
+        var tag = this.options.currentTag.toLowerCase();
         var url;
         if (tag === "popular") {
             url = "https://api.instagram.com/v1/media/popular";
@@ -133,7 +132,6 @@ define(function(require, exports, module) {
         var self = this;
         forge.file.getImage({
             width: 290,
-            height: 290,
             source: "camera",
             saveLocation: "file"
         }, function (file) {
@@ -142,11 +140,13 @@ define(function(require, exports, module) {
                     user:    { profile_picture: "img/forge-logo.png",
                                full_name: "Forge" },
                     images:  { low_resolution: { url: url } },
-                    caption: { text: "Made with @triggercorp and @befamous" }
+                    caption: { text: "Made with @befamous and @triggercorp" },
+                    comments: { data: [
+                        { from: { full_name: "antoinevg"  }, text: "feeling excited about #hybrid apps yet?" }
+                    ] }
                 };
                 self.listView.addItem(Templates.front(item),
                                       Templates.rear(item));
-
             });
         });
     };

@@ -5,7 +5,7 @@
     "homepage": "https://github.com/trigger-corp/famous-triggerio-tutorial",
     "authors": [{
         "name": "Antoine van Gelder",
-        "url": "http://github.com/trigger-corp/"
+        "url": "https://github.com/trigger-corp/"
     }],
     "main": "app/index.html",
     "moduleType": [

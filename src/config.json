@@ -1,10 +1,10 @@
 {
 	"config_version": "4",
-	"name": "triggerio-generators",
+	"name": "Tutorial",
 	"author": "antoine@trigger.io",
 	"version": "0.1",
 	"platform_version": "v2.1.9",
-	"description": "An empty app created by default",
+	"description": "Trigger.io + Famo.us Tutorial",
 	"core": {
 		"general": {
 			"logging": {

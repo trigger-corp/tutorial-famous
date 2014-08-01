@@ -1,6 +1,5 @@
 /* globals define, forge */
 define(function(require, exports, module) {
-
     var View = require("famous/core/View");
 
     function NativeView() {
@@ -12,6 +11,15 @@ define(function(require, exports, module) {
     }
     NativeView.prototype = Object.create(View.prototype);
     NativeView.prototype.constructor = NativeView;
+
+    NativeView.DEFAULT_OPTIONS = {
+        openPosition: 276,
+        transition: {
+            duration: 400,
+            curve: "easeInOut"
+        },
+        currentTag: "Popular"
+    };
 
     function _createTabBar() {
         var self = this;
@@ -26,7 +34,7 @@ define(function(require, exports, module) {
 
     function _showTopBar() {
         var self = this;
-        forge.topbar.setTitle("Timeline"); // TODO tag
+        forge.topbar.setTitle(this.options.currentTag);
         forge.topbar.removeButtons(function () {
             forge.topbar.addButton({
                 icon: "/img/hamburger.png",
@@ -63,7 +71,10 @@ define(function(require, exports, module) {
 
     function _createEvents() {
         var self = this;
-        this._eventInput.on("clickDone", function () {
+        this._eventInput.on("clickDone", function (currentTag) {
+            if (currentTag) {
+                self.options.currentTag = currentTag;
+            }
             _showTopBar.call(self);
             self._eventOutput.emit("clickDone");
         });
