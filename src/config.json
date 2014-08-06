@@ -1,10 +1,10 @@
 {
 	"config_version": "4",
-	"name": "Tutorial",
+	"name": "tutorial-famous",
 	"author": "antoine@trigger.io",
-	"version": "0.1",
+	"version": "1.0",
 	"platform_version": "v2.1.9",
-	"description": "Trigger.io + Famo.us Tutorial",
+	"description": "Famo.us Trigger.io Tutorial",
 	"core": {
 		"general": {
 			"logging": {
@@ -43,45 +43,11 @@
 				}
 			}
 		},
-		"launchimage": {
-			"version": "2.4",
-			"config": {
-				"background-size": "auto"
-			}
-		},
-		"geolocation": {
-			"version": "2.0"
-		},
-		"media": {
-			"version": "2.3",
-			"config": {}
-		},
-		"icons": {
-			"version": "2.3",
-			"config": {}
-		},
-		"notification": {
+		"topbar": {
 			"version": "2.4"
 		},
-		"prefs": {
-			"version": "2.0"
-		},
-		"sms": {
-			"version": "2.2"
-		},
-		"ui": {
-			"version": "2.1"
-		},
-		"topbar": {
-			"version": "2.4",
-			"disabled": false
-		},
 		"tabbar": {
-			"version": "2.4",
-			"disabled": false
-		},
-		"tabs": {
-			"version": "2.6"
+			"version": "2.4"
 		}
 	}
 }
