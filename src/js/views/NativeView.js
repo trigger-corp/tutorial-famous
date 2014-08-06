@@ -22,39 +22,36 @@ define(function(require, exports, module) {
     };
 
     function _createTabBar() {
-        var self = this;
         forge.tabbar.addButton({
             icon: "/img/camera.png"
         }, function (button) {
             button.onPressed.addListener(function () {
-                self._eventOutput.emit("clickCamera");
-            });
-        });
+                this._eventOutput.emit("clickCamera");
+            }.bind(this));
+        }.bind(this));
     }
 
     function _showTopBar() {
-        var self = this;
         forge.topbar.setTitle(this.options.currentTag);
         forge.topbar.removeButtons(function () {
             forge.topbar.addButton({
                 icon: "/img/hamburger.png",
                 position: "left"
             }, function () {
-                self._eventOutput.emit("clickBurger");
-                _showTopBarBurger.call(self);
-            });
+                this._eventOutput.emit("clickBurger");
+                _showTopBarBurger.call(this);
+            }.bind(this));
             forge.topbar.addButton({
                 icon: "/img/refresh.png",
                 position: "right"
             }, function () {
-                self._eventOutput.emit("clickRefresh");
-            });
-        });
+                this._eventOutput.emit("clickRefresh");
+            }.bind(this));
+        }.bind(this));
         forge.tabbar.show();
     }
 
     function _showTopBarBurger() {
-        var self = this;
         forge.topbar.setTitle("Burger");
         forge.topbar.removeButtons(function () {
             forge.topbar.addButton({
@@ -62,22 +59,21 @@ define(function(require, exports, module) {
                 style: "done",
                 position: "right"
             }, function () {
-                _showTopBar.call(self);
-                self._eventOutput.emit("clickDone");
-            });
-        });
+                _showTopBar.call(this);
+                this._eventOutput.emit("clickDone");
+            }.bind(this));
+        }.bind(this));
         forge.tabbar.hide();
     }
 
     function _createEvents() {
-        var self = this;
         this._eventInput.on("clickDone", function (currentTag) {
             if (currentTag) {
-                self.options.currentTag = currentTag;
+                this.options.currentTag = currentTag;
             }
-            _showTopBar.call(self);
-            self._eventOutput.emit("clickDone");
-        });
+            _showTopBar.call(this);
+            this._eventOutput.emit("clickDone");
+        }.bind(this));
     }
 
     module.exports = NativeView;

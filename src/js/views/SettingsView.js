@@ -6,9 +6,6 @@ define(function(require, exports, module) {
     var Transform = require("famous/core/Transform");
     var ContainerSurface = require("famous/surfaces/ContainerSurface");
     var SequentialLayout = require("famous/views/SequentialLayout");
-
-    //var MouseSync = require("famous/inputs/MouseSync");
-    //var TouchSync = require("famous/inputs/TouchSync");
     var GenericSync = require("famous/inputs/GenericSync");
 
     function SettingsView() {
@@ -21,12 +18,11 @@ define(function(require, exports, module) {
         sequentialLayout.sequenceFrom(this.surfaces);
         this.add(sequentialLayout);
 
-        var self = this;
         _createMenuHeader.call(this, "Tags");
         [ "Popular", "Kittens", "Puppies", "Parrots", "Sloths" ].forEach(function (item) {
-            _createMenuItem.call(self, item, false);
-        });
-        _createMenuItem.call(self, "Olinguito", true);
+            _createMenuItem.call(this, item, false);
+        }.bind(this));
+        _createMenuItem.call(this, "Olinguito", true);
         _createMenuFooter.call(this);
     }
     SettingsView.prototype = Object.create(View.prototype);
@@ -101,7 +97,6 @@ define(function(require, exports, module) {
         container.add(modifier).add(surface);
         this.surfaces.push(container);
 
-        var self = this;
         var sync = new GenericSync({
             "mouse"  : {},
             "touch"  : {}
@@ -115,8 +110,8 @@ define(function(require, exports, module) {
             background.setProperties({
                 background: "white"
             });
-            self._eventOutput.emit("clickTag", tag);
-        });
+            this._eventOutput.emit("clickTag", tag);
+        }.bind(this));
         surface.pipe(sync);
     }
 

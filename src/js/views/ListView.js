@@ -12,7 +12,6 @@ define(function(require, exports, module) {
 
     var ContainerSurface = require("famous/surfaces/ContainerSurface");
     var RenderController = require("famous/views/RenderController");
-
     var Scrollview = require("famous/views/Scrollview");
 
     function ListView() {
@@ -24,6 +23,7 @@ define(function(require, exports, module) {
     ListView.prototype.constructor = ListView;
 
     ListView.DEFAULT_OPTIONS = {
+        itemHeight: 310
     };
 
     function _createList() {
@@ -37,9 +37,6 @@ define(function(require, exports, module) {
     }
 
     ListView.prototype.addItem = function (content_front, content_rear) {
-        var itemHeight = 310;
-
-        // setup item views
         var controller = new RenderController({
             inTransition:  { method: "tween", curve: "easeInOut", duration: 750 },
             outTransition: { method: "tween", curve: "easeInOut", duration: 750 },
@@ -93,14 +90,14 @@ define(function(require, exports, module) {
         rear.getSize = function() {
             return [undefined, height.get()];
         };
-        height.set(itemHeight, {
+        height.set(this.options.itemHeight, {
             duration: 1000,
             curve: Easing.outCirc
         }, function () {
-            front.setSize([undefined, itemHeight]);
-            rear.setSize([undefined, itemHeight]);
-            container.setSize([undefined, itemHeight]);
-        });
+            front.setSize([undefined, this.options.itemHeight]);
+            rear.setSize([undefined, this.options.itemHeight]);
+            container.setSize([undefined, this.options.itemHeight]);
+        }.bind(this));
 
         this.surfaces.unshift(container);
     };

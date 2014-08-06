@@ -15,10 +15,11 @@ define(function(require, exports, module) {
 
         _createNativeView.call(this);
         _createSettingsView.call(this);
-        _createListContainerView.call(this);
+        _createListView.call(this);
+
         _createEvents.call(this);
 
-        this.onClickRefresh();
+        this.trigger("clickRefresh");
     }
     AppView.prototype = Object.create(View.prototype);
     AppView.prototype.constructor = AppView;
@@ -50,7 +51,7 @@ define(function(require, exports, module) {
         this.add(this.settingsContainer);
     }
 
-    function _createListContainerView() {
+    function _createListView() {
         this.listContainer = new ContainerSurface({
             properties: {
                 backgroundColor: "#f4f4f4",
@@ -66,34 +67,27 @@ define(function(require, exports, module) {
         this.add(this.listModifier).add(this.listContainer);
     }
 
-    function _createEvents () {
-        var self = this;
+    function _createEvents() {
         this._eventInput.on("clickBurger", function () {
-            self.toggleMainView();
-        });
+            _toggleMainView.call(this);
+        }.bind(this));
         this._eventInput.on("clickDone", function () {
-            self.toggleMainView();
-        });
+            _toggleMainView.call(this);
+        }.bind(this));
         this._eventInput.on("clickRefresh", function () {
-            self.onClickRefresh();
-        });
+            _refreshListView.call(this);
+        }.bind(this));
         this._eventInput.on("clickCamera", function () {
-            self.onClickCamera();
-        });
+            _takePhotograph.call(this);
+        }.bind(this));
         this._eventInput.on("clickTag", function (tag) {
-            self.options.currentTag = tag;
-            self.onClickRefresh();
-            self.nativeView.trigger("clickDone", tag);
-        });
-
-        // none of this works!?!
-        //this.add(this.nativeView);
-        //this._eventInput.pipe(this.nativeView);
-        //this.nativeView.pipe(this);
-        //this.nativeView.subscribe(this);
+            this.options.currentTag = tag;
+            _refreshListView.call(this);
+            this.nativeView.trigger("clickDone", tag);
+        }.bind(this));
     }
 
-    AppView.prototype.toggleMainView = function () {
+    function _toggleMainView() {
         if (this._toggle) {
             this.listModifier.setTransform(Transform.translate(0, 0, 1.0),
                                            this.options.transition);
@@ -103,9 +97,9 @@ define(function(require, exports, module) {
         }
         this._toggle = !this._toggle;
         return this._toggle;
-    };
+    }
 
-    AppView.prototype.onClickRefresh = function () {
+    function _refreshListView() {
         var client_id = "e8f3e3e90a0d466484df7fac556c51da";
         var tag = this.options.currentTag.toLowerCase();
         var url;
@@ -114,22 +108,20 @@ define(function(require, exports, module) {
         } else {
             url = "https://api.instagram.com/v1/tags/" + tag + "/media/recent";
         }
-        var self = this;
         forge.request.ajax({
             url: url + "?client_id=" + client_id,
             dataType: "json"
         }, function (response) {
             response.data.forEach(function (item) {
-                self.listView.addItem(Templates.front(item),
+                this.listView.addItem(Templates.front(item),
                                       Templates.rear(item));
-            });
-        }, function (error) {
+            }.bind(this));
+        }.bind(this), function (error) {
             console.error("Request failed: " + JSON.stringify(error));
         });
-    };
+    }
 
-    AppView.prototype.onClickCamera = function () {
-        var self = this;
+    function _takePhotograph() {
         forge.file.getImage({
             width: 290,
             source: "camera",
@@ -145,11 +137,11 @@ define(function(require, exports, module) {
                         { from: { full_name: "antoinevg"  }, text: "feeling excited about #hybrid apps yet?" }
                     ] }
                 };
-                self.listView.addItem(Templates.front(item),
+                this.listView.addItem(Templates.front(item),
                                       Templates.rear(item));
-            });
-        });
-    };
+            }.bind(this));
+        }.bind(this));
+    }
 
     module.exports = AppView;
 });
