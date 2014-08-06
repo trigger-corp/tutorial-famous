@@ -1,5 +1,4 @@
 .editorconfig
-.jshintrc
 .lib/
 .template/
 .yo-rc.json
