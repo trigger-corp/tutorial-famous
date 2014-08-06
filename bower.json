@@ -1,15 +1,15 @@
 {
-    "name": "famous-triggerio-tutorial",
+    "name": "tutorial-famous",
     "description": "Tutorial for writing a Famo.us app using Trigger.io",
-    "version": "0.1.0",
-    "homepage": "https://github.com/trigger-corp/famous-triggerio-tutorial",
+    "version": "1.0.0",
+    "homepage": "https://github.com/trigger-corp/tutorial-famous",
     "authors": [{
         "name": "Antoine van Gelder",
         "url": "https://github.com/trigger-corp/"
     }],
-    "main": "app/index.html",
+    "main": "src/index.html",
     "moduleType": [
-        "amd"
+        "es6"
     ],
     "keywords": [
         "famo.us", "trigger.io"

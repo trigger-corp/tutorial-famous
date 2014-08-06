@@ -4,6 +4,7 @@
 .yo-rc.json
 forge-error.log
 local_config.json
+development/
 release/
 src/identity.json
 src/lib/
