@@ -1,0 +1,10 @@
+.editorconfig
+.jshintrc
+.lib/
+.template/
+.yo-rc.json
+forge-error.log
+local_config.json
+release/
+src/identity.json
+src/lib/
