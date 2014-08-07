@@ -6,7 +6,7 @@ html {
     color: black;
     font-family: "Helvetica Neue", "Helvetica", "Arial";
     font-weight: lighter;
-    -webkit-user-select: none; /* Disable 'hold to copy' */
+    -webkit-user-select: none;
 }
 
 .backfaceVisibility {
@@ -26,7 +26,7 @@ div.front {
     background: white;
     color:black;
     border-radius: 7px;
-    border: 0.5px solid grey; /* iOS 8 only */
+    border: 0.5px solid grey;
     padding: 0px;
     margin-left: 10px;
     margin-right: 10px;
@@ -41,8 +41,8 @@ div.rear {
     background: #dddddd;
     color:black;
     border-radius: 7px;
-    border: 0.5px solid grey; /* iOS 8 only */
-    padding: 0px;/*15px;*/
+    border: 0.5px solid grey;
+    padding: 0px;
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 5px;
@@ -64,10 +64,9 @@ div.rear .icon {
 
 div.rear .user {
     font-weight: bold;
-    height: 1.25em; /*25px;*/
+    height: 1.25em;
     text-overflow: ellipsis;
     overflow: hidden;
-    border: 0px solid blue;
     padding: 0px;
     margin: 0px;
     margin-right: 5px;
@@ -79,7 +78,6 @@ div.rear .caption {
     margin: 0px;
     margin-right: 5px;
     margin-top: 5px;
-    border: 0px solid red;
     height: 5.2em;
     text-overflow: ellipsis;
     overflow: hidden;

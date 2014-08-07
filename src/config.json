@@ -8,7 +8,7 @@
 	"core": {
 		"general": {
 			"logging": {
-				"level": "DEBUG"
+				"level": "INFO"
 			},
 			"reload": true
 		},

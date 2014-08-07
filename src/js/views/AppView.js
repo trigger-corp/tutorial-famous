@@ -25,12 +25,12 @@ define(function(require, exports, module) {
     AppView.prototype.constructor = AppView;
 
     AppView.DEFAULT_OPTIONS = {
+        currentTag: "Popular",
         openPosition: 276,
         transition: {
             duration: 400,
             curve: "easeInOut"
-        },
-        currentTag: "Popular"
+        }
     };
 
     function _createNativeView() {
