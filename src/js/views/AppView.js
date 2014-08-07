@@ -5,10 +5,10 @@ define(function(require, exports, module) {
     var View = require("famous/core/View");
     var ContainerSurface = require("famous/surfaces/ContainerSurface");
 
+    var Templates = require("Templates");
     var NativeView = require("views/NativeView");
     var ListView = require("views/ListView");
     var SettingsView = require("views/SettingsView");
-    var Templates = require("views/Templates");
 
     function AppView() {
         View.apply(this, arguments);

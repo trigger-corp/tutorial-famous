@@ -1,7 +1,4 @@
 html { 
-    position: fixed;
-    height: 100%;
-    width: 100%;
     background: #555;
     color: black;
     font-family: "Helvetica Neue", "Helvetica", "Arial";
@@ -12,14 +9,6 @@ html {
 .backfaceVisibility {
     -webkit-backface-visibility: visible;
     backface-visibility: visible;
-}
-
-.right-arrow {
-    background-image: url("data:image/svg+xml;charset=utf-8,<svg viewBox='0 0 60 120' xmlns='http://www.w3.org/2000/svg'><path d='m60 61.5-38.25 38.25-9.75-9.75 29.25-28.5-29.25-28.5 9.75-9.75z' fill='%23c7c7cc'/></svg>");
-    background-origin: padding-box;
-    background-position: calc(-70px + 100%) 50%;
-    background-repeat: no-repeat;
-    background-size: 10px 20px;
 }
 
 div.front {
@@ -109,4 +98,12 @@ div.rear span.usertag {
 div.rear span.hashtag {
     color: brown;
     font-weight: normal;
+}
+
+.right-arrow {
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg viewBox='0 0 60 120' xmlns='http://www.w3.org/2000/svg'><path d='m60 61.5-38.25 38.25-9.75-9.75 29.25-28.5-29.25-28.5 9.75-9.75z' fill='%23c7c7cc'/></svg>");
+    background-origin: padding-box;
+    background-position: calc(-70px + 100%) 50%;
+    background-repeat: no-repeat;
+    background-size: 10px 20px;
 }
