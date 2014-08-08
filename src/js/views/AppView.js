@@ -10,6 +10,9 @@ define(function(require, exports, module) {
     var ListView = require("views/ListView");
     var SettingsView = require("views/SettingsView");
 
+    /**
+     * view constructor
+     */
     function AppView() {
         View.apply(this, arguments);
 
@@ -24,20 +27,28 @@ define(function(require, exports, module) {
     AppView.prototype = Object.create(View.prototype);
     AppView.prototype.constructor = AppView;
 
+    /**
+     * view state variables
+     */
     AppView.DEFAULT_OPTIONS = {
         currentTag: "Popular",
-        openPosition: 276,
         transition: {
             duration: 400,
             curve: "easeInOut"
         }
     };
 
+    /**
+     * creates a view that manages native UI elements
+     */
     function _createNativeView() {
         this.nativeView = new NativeView();
         this.subscribe(this.nativeView);
     }
 
+    /**
+     * creates a view that manages the slide-out Settings menu
+     */
     function _createSettingsView() {
         this.settingsContainer = new ContainerSurface({
             properties: {
@@ -51,6 +62,9 @@ define(function(require, exports, module) {
         this.add(this.settingsContainer);
     }
 
+    /**
+     * creates a view that manages the image timeline
+     */
     function _createListView() {
         this.listContainer = new ContainerSurface({
             properties: {
@@ -67,12 +81,15 @@ define(function(require, exports, module) {
         this.add(this.listModifier).add(this.listContainer);
     }
 
+    /**
+     * configure view event handling
+     */
     function _createEvents() {
         this._eventInput.on("clickBurger", function () {
-            _toggleMainView.call(this);
+            _openBurgerMenu.call(this);
         }.bind(this));
         this._eventInput.on("clickDone", function () {
-            _toggleMainView.call(this);
+            _closeBurgerMenu.call(this);
         }.bind(this));
         this._eventInput.on("clickRefresh", function () {
             _refreshListView.call(this);
@@ -87,7 +104,10 @@ define(function(require, exports, module) {
         }.bind(this));
     }
 
-    function _toggleMainView() {
+    /**
+     * toggles the sliding menu
+     */
+    /*function _toggleMainView() {
         if (this._toggle) {
             this.listModifier.setTransform(Transform.translate(0, 0, 1.0),
                                            this.options.transition);
@@ -97,8 +117,31 @@ define(function(require, exports, module) {
         }
         this._toggle = !this._toggle;
         return this._toggle;
+    }*/
+
+    /**
+     * opens the sliding menu
+     */
+    function _openBurgerMenu() {
+        this.listModifier.setTransform(Transform.translate(276, 0, 1.0), {
+            duration: 400,
+            curve: "easeInOut"
+        });
     }
 
+    /**
+     * closes the sliding menu
+     */
+    function _closeBurgerMenu() {
+        this.listModifier.setTransform(Transform.translate(0, 0, 1.0), {
+            duration: 400,
+            curve: "easeInOut"
+        });
+    }
+
+    /**
+     * refresh the image timeline with new items from the remote API
+     */
     function _refreshListView() {
         var client_id = "e8f3e3e90a0d466484df7fac556c51da";
         var tag = this.options.currentTag.toLowerCase();
@@ -121,6 +164,9 @@ define(function(require, exports, module) {
         });
     }
 
+    /**
+     * take a photograph with the device camera
+     */
     function _takePhotograph() {
         forge.file.getImage({
             width: 290,

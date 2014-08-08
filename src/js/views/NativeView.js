@@ -2,6 +2,9 @@
 define(function(require, exports, module) {
     var View = require("famous/core/View");
 
+    /**
+     * view constructor
+     */
     function NativeView() {
         View.apply(this, arguments);
         
@@ -12,15 +15,16 @@ define(function(require, exports, module) {
     NativeView.prototype = Object.create(View.prototype);
     NativeView.prototype.constructor = NativeView;
 
+    /**
+     * view state variables
+     */
     NativeView.DEFAULT_OPTIONS = {
-        openPosition: 276,
-        transition: {
-            duration: 400,
-            curve: "easeInOut"
-        },
         currentTag: "Popular"
     };
 
+    /**
+     * create a native tabbar
+     */
     function _createTabBar() {
         forge.tabbar.addButton({
             icon: "/img/camera.png"
@@ -31,6 +35,9 @@ define(function(require, exports, module) {
         }.bind(this));
     }
 
+    /**
+     * show the default topbar view
+     */
     function _showTopBar() {
         forge.topbar.setTitle(this.options.currentTag);
         forge.topbar.removeButtons(function () {
@@ -38,8 +45,8 @@ define(function(require, exports, module) {
                 icon: "/img/hamburger.png",
                 position: "left"
             }, function () {
-                this._eventOutput.emit("clickBurger");
                 _showTopBarBurger.call(this);
+                this._eventOutput.emit("clickBurger");
             }.bind(this));
             forge.topbar.addButton({
                 icon: "/img/refresh.png",
@@ -51,6 +58,9 @@ define(function(require, exports, module) {
         forge.tabbar.show();
     }
 
+    /**
+     * show the settings menu topbar view 
+     */
     function _showTopBarBurger() {
         forge.topbar.setTitle("Burger");
         forge.topbar.removeButtons(function () {
@@ -66,6 +76,9 @@ define(function(require, exports, module) {
         forge.tabbar.hide();
     }
 
+    /**
+     * configure view event handling
+     */
     function _createEvents() {
         this._eventInput.on("clickDone", function (currentTag) {
             if (currentTag) {
