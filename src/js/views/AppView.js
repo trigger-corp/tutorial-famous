@@ -31,7 +31,7 @@ define(function(require, exports, module) {
      * view state variables
      */
     AppView.DEFAULT_OPTIONS = {
-        currentTag: "Popular",
+        currentTag: "Sloths",
         transition: {
             duration: 400,
             curve: "easeInOut"
@@ -130,12 +130,7 @@ define(function(require, exports, module) {
     function _refreshListView() {
         var client_id = "e8f3e3e90a0d466484df7fac556c51da";
         var tag = this.options.currentTag.toLowerCase();
-        var url;
-        if (tag === "popular") {
-            url = "https://api.instagram.com/v1/media/popular";
-        } else {
-            url = "https://api.instagram.com/v1/tags/" + tag + "/media/recent";
-        }
+        var url = "https://api.instagram.com/v1/tags/" + tag + "/media/recent";
         forge.request.ajax({
             url: url + "?client_id=" + client_id,
             dataType: "json"

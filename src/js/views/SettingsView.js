@@ -19,7 +19,7 @@ define(function(require, exports, module) {
         this.add(sequentialLayout);
 
         _createMenuHeader.call(this, "Tags");
-        [ "Popular", "Kittens", "Puppies", "Parrots", "Sloths" ].forEach(function (item) {
+        [ "Elephants", "Kittens", "Puppies", "Parrots", "Sloths" ].forEach(function (item) {
             _createMenuItem.call(this, item, false);
         }.bind(this));
         _createMenuItem.call(this, "Olinguito", true);

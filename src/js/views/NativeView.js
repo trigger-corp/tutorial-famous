@@ -19,7 +19,7 @@ define(function(require, exports, module) {
      * view state variables
      */
     NativeView.DEFAULT_OPTIONS = {
-        currentTag: "Popular"
+        currentTag: "Sloths"
     };
 
     /**
