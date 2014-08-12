@@ -105,21 +105,6 @@ define(function(require, exports, module) {
     }
 
     /**
-     * toggles the sliding menu
-     */
-    /*function _toggleMainView() {
-        if (this._toggle) {
-            this.listModifier.setTransform(Transform.translate(0, 0, 1.0),
-                                           this.options.transition);
-        } else {
-            this.listModifier.setTransform(Transform.translate(this.options.openPosition, 0, 1.0),
-                                           this.options.transition);
-        }
-        this._toggle = !this._toggle;
-        return this._toggle;
-    }*/
-
-    /**
      * opens the sliding menu
      */
     function _openBurgerMenu() {
@@ -169,7 +154,7 @@ define(function(require, exports, module) {
      */
     function _takePhotograph() {
         forge.file.getImage({
-            width: 290,
+            width: 300,
             source: "camera",
             saveLocation: "file"
         }, function (file) {
