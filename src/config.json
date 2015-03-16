@@ -3,7 +3,7 @@
 	"name": "tutorial-famous",
 	"author": "antoine@trigger.io",
 	"version": "1.0",
-	"platform_version": "v2.1.9",
+	"platform_version": "v2.2.10",
 	"description": "Famo.us Trigger.io Tutorial",
 	"core": {
 		"general": {
@@ -13,7 +13,6 @@
 			"reload": true
 		},
 		"ios": {
-			"minimum_version": "7.0",
 			"device_family": "iphone"
 		},
 		"android": {
