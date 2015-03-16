@@ -16,7 +16,8 @@
 			"device_family": "iphone"
 		},
 		"android": {
-			"minimum_version": "5"
+			"minimum_version": "5",
+			"remote_debugging": true
 		}
 	},
 	"modules": {
